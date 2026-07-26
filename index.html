@@ -94,10 +94,62 @@
 	
 	</html>
 	
-	<form action=""https://cse.google.com/cse.js?cx=f211f9f039b394f7c" method="GET" style="text-align:center;">
-    <input type="text" name="q" placeholder="Ask anything...."
-           style="margin-top: 30px;width:400px; padding:12px; font-size:18px; border-radius:25px; border:none;">
+	 <script async src="https://cse.google.com/cse.js?cx=f211f9f039b394f7c"></script>
 
-    <input type="submit" value="Search"
-           style="padding:12px 25px; border:none; border-radius:25px; background:#007BFF; color:white; cursor:pointer;">
-</form>
+<style>
+body{
+    margin:0;
+    background:linear-gradient(to right,#00001a,#0a0a8f);
+    font-family:Arial,sans-serif;
+    color:white;
+}
+
+.container{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    height:50vh;
+}
+
+h1{
+    font-size:70px;
+    margin-bottom:30px;
+}
+
+/* Center the search box */
+.gcse-searchbox-only{
+    width:500px;
+}
+
+/* Center Google's search widget */
+.gsc-control-cse{
+    background:transparent !important;
+    border:none !important;
+}
+
+.gsc-search-box{
+    margin:0 auto !important;
+    width:500px !important;
+}
+
+/* Hide the duplicate clear button */
+.gsst_b{
+    display:none !important;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    
+    <div class="gcse-searchbox-only"></div>
+
+</div>
+
+<div class="gcse-searchresults"></div>
+
+</body>
