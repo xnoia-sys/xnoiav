@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Xnoia Search</title>
+
+    <style>
+        body{
+            background:#081b4b;
+            font-family:Arial, sans-serif;
+            color:white;
+            text-align:center;
+            margin:0;
+        }
+
+        h1{
+            margin-top:60px;
+            font-size:60px;
+        }
+
+        input{
+            width:500px;
+            padding:15px;
+            font-size:18px;
+            border:none;
+            border-radius:30px;
+        }
+
+        button{
+            padding:15px 25px;
+            font-size:18px;
+            border:none;
+            border-radius:30px;
+            background:#00bfff;
+            color:white;
+            cursor:pointer;
+        }
+
+        #results{
+            width:70%;
+            margin:40px auto;
+            text-align:left;
+        }
+
+        .result{
+            background:#143b8d;
+            padding:20px;
+            border-radius:10px;
+            margin-bottom:20px;
+        }
+
+        a{
+            color:#00d9ff;
+            text-decoration:none;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>Xnoia Search</h1>
+
+<input type="text" id="searchBox" placeholder="Search Xnoia...">
+
+<button onclick="searchWebsite()">Search</button>
+
+<div id="results"></div>
+
+<script>
+
+const pages = [
+
+{
+title:"Home",
+text:"Welcome to Xnoia. This is the homepage.",
+link:"index.html"
+},
+
+{
+title:"About",
+text:"Learn about Xnoia and our mission.",
+link:"about.html"
+},
+
+{
+title:"Services",
+text:"We offer Web Design, Web Development, Graphic Design and Mobile Friendly websites.",
+link:"services.html"
+},
+
+{
+title:"Contact",
+text:"Contact Xnoia through email and phone.",
+link:"contact.html"
+}
+
+];
+
+function searchWebsite(){
+
+let input = document.getElementById("searchBox").value.toLowerCase();
+
+let output="";
+
+for(let i=0;i<pages.length;i++){
+
+if(pages[i].title.toLowerCase().includes(input) ||
+pages[i].text.toLowerCase().includes(input)){
+
+output += `
+<div class="result">
+<h2>${pages[i].title}</h2>
+<p>${pages[i].text}</p>
+<a href="${pages[i].link}">Open Page</a>
+</div>
+`;
+
+}
+
+}
+
+if(output==""){
+output="<h2>No results found.</h2>";
+}
+
+document.getElementById("results").innerHTML=output;
+
+}
+
+</script>
+
+</body>
+</html>

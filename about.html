@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<title>AboutX</title>
+		</head>
+
+			<body style="background: linear-gradient(to right, black, darkblue); color:white; ">
+				<style>
+        body{
+            margin:0;
+            font-family:Arial, sans-serif;
+            background:linear-gradient(to right,#020024,#090979,#0044ff);
+        }
+
+        /* Navigation Bar */
+        .navbar{
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            padding:20px 50px;
+        }
+
+        .logo{
+            color:white;
+            font-size:32px;
+            font-weight:bold;
+            margin:0;
+        }
+
+        .nav-links{
+            list-style:none;
+            display:flex;
+            gap:30px;
+            margin:0;
+            padding:0;
+        }
+
+        .nav-links a{
+            color:white;
+            text-decoration:none;
+            font-size:18px;
+            transition:0.3s;
+        }
+
+        .nav-links a:hover{
+            color:#00d9ff;
+        }
+
+        /* Center Content */
+        .hero{
+            height:80vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            flex-direction:column;
+            color:white;
+        }
+
+        .hero h1{
+            font-size:80px;
+            margin:0;
+        }
+
+        .hero p{
+            font-size:22px;
+        }
+    </style>
+
+</html>
+				<nav class="navbar">
+					<div class="menu-icon" onclick="toggleMenu()">
+						☰
+					</div>
+
+<div id="menu" style="display:none;">
+    <a href="#home">Home</a><br>
+    <a href="#about">About</a><br>
+    <a href="#services">Services</a><br>
+    <a href="#contact">Contact</a>
+</div>
+
+<script>
+function toggleMenu() {
+    var menu = document.getElementById("menu");
+
+    if (menu.style.display === "none" || menu.style.display === "") {
+        menu.style.display = "block";
+    } else {
+        menu.style.display = "none";
+    }
+}
+</script>
+					
+					<ul class="nav-links">
+						<li><a href="index.html">Home</a></li>
+						<li><a href="about.html">About</a></li>
+						<li><a href="services.html">Services</a></li>
+					<li><a href="contact.html">Contact</a></li>
+					</ul>
+				</nav>
+				
+				
+		</script>
+				<h1 style="text-align:center; position:center; margin-top: 200px; font-size:90px;">About X.</h1>
+				<p style="text-align:center; position:center; color:blue; margin-top: 100px; font-size:50px;">All About ICT</p>
+				<div style="
+					position:fixed;
+					bottom: 30px;
+					left: 30px
+				">
+					
+				</div>
+			</body>
+
+	
+	</html>
