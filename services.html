@@ -7,7 +7,7 @@
 			<body style="background: linear-gradient(to right, black, darkblue); color:white; ">
 				<!DOCTYPE html>
 
-    <style>
+<style>
         body{
             margin:0;
             font-family:Arial, sans-serif;
@@ -70,15 +70,16 @@
 
 </html>
 				<nav class="navbar">
-					<h2 class="logo">&#9776;</h2>
-					
-					<ul class="nav-links">
-						<li><a href="index.html">Home</a></li>
-						<li><a href="about.html">About</a></li>
-						<li><a href="services.html">Services</a></li>
-					<li><a href="contact.html">Contact</a></li>
-					</ul>
-				</nav><section id="services">
+					<div class="menu-icon" onclick="toggleMenu()">
+						☰
+					</div>
+
+<div id="menu" style="display:none;">
+    <a href="#home">Home</a><br>
+    <a href="#about">About</a><br>
+    <a href="#services">Services</a><br>
+    <a href="#contact">Contact</a>
+</div>
 
     <h1>Our Services</h1>
 
