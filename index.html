@@ -1,103 +1,14 @@
 <!DOCTYPE html>
 	<html>
 		<head>
+
+
 			<title>Xhome</title>
-		</head>
 
-			<body style="background: linear-gradient(to right, black, darkblue); color:white; ">
-				<!DOCTYPE html>
+			<script async src="https://cse.google.com/cse.js?cx=f211f9f039b394f7c"></script>
 
-    <style>
-        body{
-            margin:0;
-            font-family:Arial, sans-serif;
-            background:linear-gradient(to right,#020024,#090979,#0044ff);
-        }
-
-        /* Navigation Bar */
-        .navbar{
-            display:flex;
-            justify-content:space-between;
-            align-items:center;
-            padding:20px 50px;
-        }
-
-        .logo{
-            color:white;
-            font-size:32px;
-            font-weight:bold;
-            margin:0;
-        }
-
-        .nav-links{
-            list-style:none;
-            display:flex;
-            gap:30px;
-            margin:0;
-            padding:0;
-        }
-
-        .nav-links a{
-            color:white;
-            text-decoration:none;
-            font-size:18px;
-            transition:0.3s;
-        }
-
-        .nav-links a:hover{
-            color:#00d9ff;
-        }
-
-        /* Center Content */
-        .hero{
-            height:80vh;
-            display:flex;
-            justify-content:center;
-            align-items:center;
-            flex-direction:column;
-            color:white;
-        }
-
-        .hero h1{
-            font-size:80px;
-            margin:0;
-        }
-
-        .hero p{
-            font-size:22px;
-        }
-    </style>
-
-</html>
-				<nav class="navbar">
-					<h2 class="logo">&#9776;</h2>
-					
-					<ul class="nav-links">
-						<li><a href="index.html">Home</a></li>
-						<li><a href="about.html">About</a></li>
-						<li><a href="services.html">Services</a></li>
-					<li><a href="contact.html">Contact</a></li>
-					</ul>
-				</nav>
-				
-				<h1 style="text-align:center; position:center; margin-top: 100px; font-size:70px;">Xnoia.</h1>
-				
-				<div style="
-					position:fixed;
-					bottom: 30px;
-					left: 30px
-				">
-					
-				</div>
-			</body>
-
-	
-	</html>
-	
-	 <script async src="https://cse.google.com/cse.js?cx=f211f9f039b394f7c"></script>
-
-<style>
-body{
+			<style>
+					body{
     margin:0;
     background:linear-gradient(to right,#00001a,#0a0a8f);
     font-family:Arial,sans-serif;
@@ -109,36 +20,262 @@ body{
     flex-direction:column;
     justify-content:center;
     align-items:center;
-    height:50vh;
+    min-height:100vh;
+    padding:20px;
+    box-sizing:border-box;
 }
 
 h1{
     font-size:70px;
     margin-bottom:30px;
+    text-align:center;
 }
 
-/* Center the search box */
-.gcse-searchbox-only{
-    width:500px;
-}
-
-/* Center Google's search widget */
+/* Google Search */
 .gsc-control-cse{
+    width:100% !important;
+    max-width:500px !important;
+    margin:auto !important;
     background:transparent !important;
     border:none !important;
 }
 
-.gsc-search-box{
-    margin:0 auto !important;
-    width:500px !important;
+.gcse-searchbox-only{
+    width:100% !important;
 }
 
-/* Hide the duplicate clear button */
-.gsst_b{
-    display:none !important;
+/* Mobile */
+@media screen and (max-width:600px){
+
+    h1{
+        font-size:45px;
+    }
+
+    .gsc-control-cse{
+        max-width:95% !important;
+    }
 }
+			</style>
+
+		</head>
+
+			<body style="background: linear-gradient(to right, black, darkblue); color:white; ">
+				<!DOCTYPE html>
+
+
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: linear-gradient(to right, #020024, #090979, #0044ff);
+        color: white;
+    }
+
+    /* Navigation Bar */
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 30px;
+        box-sizing: border-box;
+    }
+
+    /* Profile Button - Left Side */
+    .profile-button {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: white;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: bold;
+    }
+
+    .profile-button img {
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid white;
+    }
+
+    .profile-button:hover {
+        color: #00d9ff;
+    }
+
+    /* Right Navigation */
+    .nav-links {
+        list-style: none;
+        display: flex;
+        gap: 30px;
+        margin: 0;
+        padding: 0;
+    }
+
+    .nav-links a {
+        color: white;
+        text-decoration: none;
+        font-size: 18px;
+        transition: 0.3s;
+    }
+
+    .nav-links a:hover {
+        color: #00d9ff;
+    }
+
+    /* Xnoia Title */
+    .hero {
+        height: 50vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        color: white;
+    }
+
+    .hero h1 {
+        font-size: 80px;
+        margin: 0;
+    }
+
+    .hero p {
+        font-size: 22px;
+    }
+
+    /* Mobile */
+    @media screen and (max-width: 600px) {
+
+        .navbar {
+            padding: 15px;
+        }
+
+        .profile-button span {
+            display: none;
+        }
+
+        .profile-button img {
+            width: 40px;
+            height: 40px;
+        }
+
+        .nav-links {
+            gap: 12px;
+        }
+
+        .nav-links a {
+            font-size: 14px;
+        }
+
+        .hero h1 {
+            font-size: 50px;
+        }
+    }
 </style>
 
+<nav class="navbar">
+
+    <!-- Profile - Left Side -->
+    <a href="profile.html" class="profile-button">
+    <img id="homeProfilePic" src="profile.jpg" alt="Profile">
+   
+</a>
+
+    <!-- Navigation - Right Side -->
+    <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="contact.html">Contact</a></li>
+    </ul>
+
+</nav>
+
+<!-- Xnoia Main Title -->
+<div class="hero">
+    <h1>Xnoia.</h1>
+	
+</div>
+
+
+<script async src="https://cse.google.com/cse.js?cx=f211f9f039b394f7c"></script>
+
+<style>
+body {
+    margin: 0;
+    background: linear-gradient(to right, #00001a, #0a0a8f);
+    font-family: Arial, sans-serif;
+    color: white;
+}
+
+/* =========================
+   SEARCH BOX POSITION
+   Change this number:
+   0px   = very high
+   50px  = lower
+   100px = even lower
+   ========================= */
+:root {
+    --search-top: 1px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    /* Easy search box placement */
+    padding-top: var(--search-top);
+
+    box-sizing: border-box;
+}
+
+h1 {
+    font-size: 70px;
+    margin: 0 0 20px 0;
+}
+
+/* Google Search */
+.gcse-searchbox-only {
+    width: 500px !important;
+}
+
+/* Google search widget */
+.gsc-control-cse {
+    background: transparent !important;
+    border: none !important;
+}
+
+/* Search box */
+.gsc-search-box {
+    width: 500px !important;
+    margin: 0 auto !important;
+}
+
+/* Hide duplicate clear button */
+.gsst_b {
+    display: none !important;
+}
+
+/* Mobile */
+@media screen and (max-width: 600px) {
+
+    :root {
+        --search-top: 20px;
+    }
+
+    h1 {
+        font-size: 45px;
+    }
+
+    .gcse-searchbox-only {
+        width: 90% !important;
+    }
+
+    .gsc-search-box {
+        width: 100% !important;
+    }
+}
+</style>
 </head>
 
 <body>
@@ -146,10 +283,18 @@ h1{
 <div class="container">
 
     
+
     <div class="gcse-searchbox-only"></div>
 
 </div>
 
 <div class="gcse-searchresults"></div>
 
+<script>
+    const savedPicture = localStorage.getItem("profilePicture");
+
+    if (savedPicture) {
+        document.getElementById("homeProfilePic").src = savedPicture;
+    }
+</script>
 </body>
