@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Xnoia - Sign Up</title>
+
+    <style>
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+
+            background: linear-gradient(
+                to right,
+                #00001a,
+                #0a0a8f
+            );
+
+            color: white;
+
+            min-height: 100vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .signup-container {
+            width: 90%;
+            max-width: 400px;
+
+            padding: 35px;
+
+            box-sizing: border-box;
+
+            background: rgba(255,255,255,0.1);
+
+            border-radius: 20px;
+
+            text-align: center;
+
+            box-shadow: 0 0 25px rgba(0,0,0,0.5);
+        }
+
+        .logo {
+            font-size: 45px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            margin-bottom: 25px;
+        }
+
+        input {
+            width: 100%;
+
+            padding: 13px;
+
+            margin: 8px 0;
+
+            box-sizing: border-box;
+
+            border: none;
+
+            border-radius: 10px;
+
+            outline: none;
+
+            font-size: 15px;
+        }
+
+        /* Password container */
+
+        .password-container {
+            position: relative;
+            width: 100%;
+        }
+
+        .password-container input {
+            padding-right: 45px;
+        }
+
+        /* Eye button */
+
+        .eye-button {
+            position: absolute;
+
+            right: 12px;
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            width: auto;
+
+            padding: 0;
+            margin: 0;
+
+            background: transparent;
+
+            color: #555;
+
+            font-size: 20px;
+
+            border: none;
+
+            cursor: pointer;
+        }
+
+        .eye-button:hover {
+            background: transparent;
+            color: #000080;
+        }
+
+        /* Sign Up button */
+
+        .signup-button {
+            width: 100%;
+
+            padding: 13px;
+
+            margin-top: 15px;
+
+            border: none;
+
+            border-radius: 25px;
+
+            background: white;
+
+            color: #000080;
+
+            font-size: 16px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+        .signup-button:hover {
+            background: #00d9ff;
+            color: white;
+        }
+
+        .message {
+            margin-top: 15px;
+            font-size: 14px;
+        }
+
+        .links {
+            margin-top: 20px;
+            font-size: 14px;
+        }
+
+        .links a {
+            color: #00d9ff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .home-button {
+            display: inline-block;
+
+            margin-top: 20px;
+
+            color: white;
+
+            text-decoration: none;
+        }
+
+        .home-button:hover {
+            color: #00d9ff;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="signup-container">
+
+    <div class="logo">
+        Xnoia.
+    </div>
+
+    <h2>Create Account</h2>
+
+    <p class="subtitle">
+        Join Xnoia today!
+    </p>
+
+
+    <!-- Username -->
+
+    <input
+        type="text"
+        id="username"
+        placeholder="Username"
+    >
+
+
+    <!-- Email -->
+
+    <input
+        type="email"
+        id="email"
+        placeholder="Email"
+    >
+
+
+    <!-- Password -->
+
+    <div class="password-container">
+
+        <input
+            type="password"
+            id="password"
+            placeholder="Password"
+        >
+
+        <button
+            type="button"
+            class="eye-button"
+            id="eyeButton"
+            onclick="togglePassword()"
+        >
+            👁️
+        </button>
+
+    </div>
+
+
+    <!-- Sign Up -->
+
+    <button
+        class="signup-button"
+        onclick="signup()"
+    >
+        Sign Up
+    </button>
+
+
+    <!-- Message -->
+
+    <div
+        id="message"
+        class="message"
+    ></div>
+
+
+    <!-- Login -->
+
+    <div class="links">
+
+        <p>
+            Already have an account?
+
+            <a href="login.html">
+                Login
+            </a>
+        </p>
+
+    </div>
+
+
+    <!-- Home -->
+
+    <a
+        href="index.html"
+        class="home-button"
+    >
+        ← Back to Home
+    </a>
+
+
+</div>
+
+
+<!-- ==========================================
+     SUPABASE JAVASCRIPT LIBRARY
+========================================== -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+<script>
+
+    /* ==========================================
+       SUPABASE INFORMATION
+    ========================================== */
+
+    const SUPABASE_URL =
+        "https://tlsaazbjavqiormpuugq.supabase.co";
+
+
+    const SUPABASE_PUBLISHABLE_KEY =
+        "sb_publishable_CaT3n6PikmsVTVMaQFr8iw_fcskLkrv";
+
+
+    const supabaseClient =
+        supabase.createClient(
+            SUPABASE_URL,
+            SUPABASE_PUBLISHABLE_KEY
+        );
+
+
+    /* ==========================================
+       SHOW / HIDE PASSWORD
+    ========================================== */
+
+    function togglePassword() {
+
+        const password =
+            document.getElementById("password");
+
+        const eyeButton =
+            document.getElementById("eyeButton");
+
+
+        if (password.type === "password") {
+
+            password.type = "text";
+
+            eyeButton.textContent = "🙈";
+
+        }
+
+        else {
+
+            password.type = "password";
+
+            eyeButton.textContent = "👁️";
+
+        }
+
+    }
+
+
+    /* ==========================================
+       SIGN UP FUNCTION
+    ========================================== */
+
+    async function signup() {
+
+        const username =
+            document.getElementById("username").value.trim();
+
+        const email =
+            document.getElementById("email").value.trim();
+
+        const password =
+            document.getElementById("password").value;
+
+        const message =
+            document.getElementById("message");
+
+
+        /* Check fields */
+
+        if (!username || !email || !password) {
+
+            message.textContent =
+                "Please fill in all fields.";
+
+            return;
+
+        }
+
+
+        /* Check password */
+
+        if (password.length < 6) {
+
+            message.textContent =
+                "Password must be at least 6 characters.";
+
+            return;
+
+        }
+
+
+        message.textContent =
+            "Creating your account...";
+
+
+        /* ==========================================
+           CREATE SUPABASE ACCOUNT
+        ========================================== */
+
+        const { data, error } =
+            await supabaseClient.auth.signUp({
+
+                email: email,
+
+                password: password,
+
+                options: {
+
+                    data: {
+                        username: username
+                    }
+
+                }
+
+            });
+
+
+        /* Check for errors */
+
+        if (error) {
+
+            message.textContent =
+                error.message;
+
+            return;
+
+        }
+
+
+        /* Success */
+
+        message.textContent =
+            "Account created successfully! Check your email to verify your account.";
+
+    }
+
+</script>
+
+
+</body>
+
+</html>

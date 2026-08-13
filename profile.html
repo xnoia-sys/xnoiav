@@ -1,0 +1,632 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Xnoia Profile</title>
+
+    <style>
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #00001a, #0a0a8f);
+            color: white;
+        }
+
+        /* =========================
+           PROFILE
+        ========================= */
+
+        .profile-container {
+            width: 90%;
+            max-width: 500px;
+            margin: 60px auto;
+            padding: 30px;
+            box-sizing: border-box;
+
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+
+            text-align: center;
+
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .profile-picture {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid white;
+        }
+
+        h1 {
+            margin-top: 15px;
+            font-size: 32px;
+        }
+
+        .description {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .info {
+            text-align: left;
+            margin-top: 25px;
+        }
+
+        .info p {
+            padding: 10px;
+            margin: 0;
+            border-bottom: 1px solid rgba(255,255,255,0.3);
+        }
+
+        /* =========================
+           BUTTONS
+        ========================= */
+
+        button,
+        .back-button {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 11px 20px;
+
+            border: none;
+            border-radius: 25px;
+
+            background: white;
+            color: #000080;
+
+            text-decoration: none;
+            font-weight: bold;
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+        button:hover,
+        .back-button:hover {
+            background: #00d9ff;
+            color: white;
+        }
+
+        /* =========================
+           ACCOUNT BUTTONS
+        ========================= */
+
+        .account-buttons {
+            margin-top: 25px;
+        }
+
+        .account-buttons button {
+            margin: 5px;
+        }
+
+        /* =========================
+           LOGIN / SIGN UP BOX
+        ========================= */
+
+        .account-box {
+            width: 100%;
+            max-width: 350px;
+
+            margin: 20px auto;
+            padding: 20px;
+
+            box-sizing: border-box;
+
+            background: rgba(0, 0, 0, 0.25);
+            border-radius: 15px;
+        }
+
+        .account-box h2 {
+            margin-top: 0;
+        }
+
+        .account-box input {
+            width: 100%;
+            padding: 12px;
+            margin: 7px 0;
+
+            box-sizing: border-box;
+
+            border: none;
+            border-radius: 8px;
+
+            outline: none;
+        }
+
+        .account-box button {
+            width: 100%;
+        }
+
+        .account-box p {
+            font-size: 14px;
+        }
+
+        .account-box a {
+            color: #00d9ff;
+            text-decoration: none;
+        }
+
+        /* =========================
+           LOGOUT
+        ========================= */
+
+        #logoutButton {
+            display: none;
+            background: #ff4444;
+            color: white;
+        }
+
+        #logoutButton:hover {
+            background: #ff2222;
+        }
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media screen and (max-width: 600px) {
+
+            .profile-container {
+                margin: 30px auto;
+                padding: 25px 20px;
+            }
+
+            .profile-picture {
+                width: 110px;
+                height: 110px;
+            }
+
+            h1 {
+                font-size: 28px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+    <div class="profile-container">
+
+        <!-- =========================
+             PROFILE PICTURE
+        ========================= -->
+
+        <img
+            id="profilePic"
+            src="profile.jpg"
+            alt="Profile Picture"
+            class="profile-picture"
+        >
+
+        <br>
+
+        <!-- Hidden File Input -->
+        <input
+            type="file"
+            id="imageInput"
+            accept="image/*"
+            style="display:none;"
+        >
+
+        <!-- Change Picture -->
+        <button onclick="document.getElementById('imageInput').click()">
+            Change Profile Picture
+        </button>
+
+
+        <!-- =========================
+             PROFILE INFORMATION
+        ========================= -->
+
+        <h1 id="profileName">Xnoia</h1>
+
+        <p class="description">
+            Welcome to Xnoia! Explore, create, and discover.
+        </p>
+
+        <div class="info">
+
+            <p>
+                <strong>Username:</strong>
+                <span id="displayUsername">Xnoia</span>
+            </p>
+
+            <p>
+                <strong>Role:</strong>
+                Web Designer
+            </p>
+
+            <p>
+                <strong>Skills:</strong>
+                HTML, CSS, JavaScript
+            </p>
+
+            <p>
+                <strong>Website:</strong>
+                Xnoia
+            </p>
+
+        </div>
+
+
+        <!-- =========================
+             LOGIN / SIGN UP BUTTONS
+        ========================= -->
+
+        <div class="account-buttons">
+
+            <button onclick="showLogin()">
+                Login
+            </button>
+
+            <button onclick="showSignup()">
+                Sign Up
+            </button>
+
+        </div>
+
+
+        <!-- =========================
+             LOGIN
+        ========================= -->
+
+        <div id="loginBox" class="account-box">
+
+            <h2>Login</h2>
+
+            <input
+                type="text"
+                id="loginUsername"
+                placeholder="Username"
+            >
+
+            <input
+                type="password"
+                id="loginPassword"
+                placeholder="Password"
+            >
+
+            <button onclick="login()">
+                Login
+            </button>
+
+            <p>
+                Don't have an account?
+                <a href="#" onclick="showSignup()">
+                    Sign Up
+                </a>
+            </p>
+
+        </div>
+
+
+        <!-- =========================
+             SIGN UP
+        ========================= -->
+
+        <div
+            id="signupBox"
+            class="account-box"
+            style="display:none;"
+        >
+
+            <h2>Create Account</h2>
+
+            <input
+                type="text"
+                id="signupUsername"
+                placeholder="Username"
+            >
+
+            <input
+                type="email"
+                id="signupEmail"
+                placeholder="Email"
+            >
+
+            <input
+                type="password"
+                id="signupPassword"
+                placeholder="Password"
+            >
+
+            <button onclick="signup()">
+                Sign Up
+            </button>
+
+            <p>
+                Already have an account?
+                <a href="#" onclick="showLogin()">
+                    Login
+                </a>
+            </p>
+
+        </div>
+
+
+        <!-- Logout -->
+        <button
+            id="logoutButton"
+            onclick="logout()"
+        >
+            Logout
+        </button>
+
+
+        <br>
+
+
+        <!-- Back Home -->
+        <a
+            href="index.html"
+            class="back-button"
+        >
+            ← Back to Home
+        </a>
+
+    </div>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================= -->
+
+    <script>
+
+        /* =========================
+           PROFILE PICTURE
+        ========================= */
+
+        const imageInput =
+            document.getElementById("imageInput");
+
+        const profilePic =
+            document.getElementById("profilePic");
+
+
+        imageInput.addEventListener("change", function() {
+
+            const file = this.files[0];
+
+            if (file) {
+
+                const reader = new FileReader();
+
+                reader.onload = function(e) {
+
+                    profilePic.src = e.target.result;
+
+                    localStorage.setItem(
+                        "profilePicture",
+                        e.target.result
+                    );
+
+                };
+
+                reader.readAsDataURL(file);
+
+            }
+
+        });
+
+
+        /* Load saved picture */
+
+        const savedPicture =
+            localStorage.getItem("profilePicture");
+
+        if (savedPicture) {
+
+            profilePic.src = savedPicture;
+
+        }
+
+
+        /* =========================
+           LOGIN / SIGN UP
+        ========================= */
+
+        function showLogin() {
+
+            document.getElementById("loginBox").style.display =
+                "block";
+
+            document.getElementById("signupBox").style.display =
+                "none";
+
+        }
+
+
+        function showSignup() {
+
+            document.getElementById("loginBox").style.display =
+                "none";
+
+            document.getElementById("signupBox").style.display =
+                "block";
+
+        }
+
+
+        /* =========================
+           SIGN UP
+        ========================= */
+
+        function signup() {
+
+            const username =
+                document.getElementById("signupUsername").value;
+
+            const email =
+                document.getElementById("signupEmail").value;
+
+            const password =
+                document.getElementById("signupPassword").value;
+
+
+            if (!username || !email || !password) {
+
+                alert("Please fill in all fields.");
+
+                return;
+
+            }
+
+
+            localStorage.setItem(
+                "username",
+                username
+            );
+
+            localStorage.setItem(
+                "email",
+                email
+            );
+
+            localStorage.setItem(
+                "password",
+                password
+            );
+
+
+            alert("Account created successfully!");
+
+            document.getElementById("displayUsername").textContent =
+                username;
+
+            showLogin();
+
+        }
+
+
+        /* =========================
+           LOGIN
+        ========================= */
+
+        function login() {
+
+            const username =
+                document.getElementById("loginUsername").value;
+
+            const password =
+                document.getElementById("loginPassword").value;
+
+
+            const savedUsername =
+                localStorage.getItem("username");
+
+            const savedPassword =
+                localStorage.getItem("password");
+
+
+            if (
+                username === savedUsername &&
+                password === savedPassword
+            ) {
+
+                localStorage.setItem(
+                    "loggedIn",
+                    "true"
+                );
+
+
+                alert("Login successful!");
+
+
+                document.getElementById("loginBox").style.display =
+                    "none";
+
+                document.querySelector(".account-buttons").style.display =
+                    "none";
+
+                document.getElementById("logoutButton").style.display =
+                    "inline-block";
+
+                document.getElementById("displayUsername").textContent =
+                    username;
+
+            }
+
+            else {
+
+                alert("Incorrect username or password.");
+
+            }
+
+        }
+
+
+        /* =========================
+           LOGOUT
+        ========================= */
+
+        function logout() {
+
+            localStorage.setItem(
+                "loggedIn",
+                "false"
+            );
+
+            document.querySelector(".account-buttons").style.display =
+                "block";
+
+            document.getElementById("logoutButton").style.display =
+                "none";
+
+            showLogin();
+
+            alert("You have been logged out.");
+
+        }
+
+
+        /* =========================
+           LOAD ACCOUNT
+        ========================= */
+
+        const savedUsername =
+            localStorage.getItem("username");
+
+        const loggedIn =
+            localStorage.getItem("loggedIn");
+
+
+        if (savedUsername) {
+
+            document.getElementById("displayUsername").textContent =
+                savedUsername;
+
+        }
+
+
+        if (loggedIn === "true") {
+
+            document.querySelector(".account-buttons").style.display =
+                "none";
+
+            document.getElementById("loginBox").style.display =
+                "none";
+
+            document.getElementById("logoutButton").style.display =
+                "inline-block";
+
+        }
+
+    </script>
+
+</body>
+
+</html>
+

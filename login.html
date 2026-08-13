@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Xnoia - Login</title>
+
+    <style>
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+
+            background: linear-gradient(
+                to right,
+                #00001a,
+                #0a0a8f
+            );
+
+            color: white;
+
+            min-height: 100vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .login-container {
+            width: 90%;
+            max-width: 400px;
+
+            padding: 35px;
+
+            box-sizing: border-box;
+
+            background: rgba(255,255,255,0.1);
+
+            border-radius: 20px;
+
+            text-align: center;
+
+            box-shadow: 0 0 25px rgba(0,0,0,0.5);
+        }
+
+        .logo {
+            font-size: 45px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 16px;
+            margin-bottom: 25px;
+        }
+
+        input {
+            width: 100%;
+            padding: 13px;
+            margin: 8px 0;
+
+            box-sizing: border-box;
+
+            border: none;
+            border-radius: 10px;
+            outline: none;
+
+            font-size: 15px;
+        }
+
+        /* Password */
+
+        .password-container {
+            position: relative;
+            width: 100%;
+        }
+
+        .password-container input {
+            padding-right: 45px;
+        }
+
+        .eye-button {
+            position: absolute;
+
+            right: 12px;
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            width: auto;
+
+            padding: 0;
+            margin: 0;
+
+            border: none;
+
+            background: transparent;
+
+            color: #555;
+
+            font-size: 20px;
+
+            cursor: pointer;
+        }
+
+        .eye-button:hover {
+            background: transparent;
+            color: #000080;
+        }
+
+        /* Login button */
+
+        .login-button {
+            width: 100%;
+
+            padding: 13px;
+            margin-top: 15px;
+
+            border: none;
+            border-radius: 25px;
+
+            background: white;
+            color: #000080;
+
+            font-size: 16px;
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+        .login-button:hover {
+            background: #00d9ff;
+            color: white;
+        }
+
+        .message {
+            margin-top: 15px;
+            font-size: 14px;
+        }
+
+        .links {
+            margin-top: 20px;
+            font-size: 14px;
+        }
+
+        .links a {
+            color: #00d9ff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .home-button {
+            display: inline-block;
+
+            margin-top: 20px;
+
+            padding: 10px 20px;
+
+            border-radius: 20px;
+
+            border: 1px solid white;
+
+            color: white;
+
+            text-decoration: none;
+        }
+
+        .home-button:hover {
+            background: white;
+            color: #000080;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="login-container">
+
+    <div class="logo">
+        Xnoia.
+    </div>
+
+
+    <p class="subtitle">
+        Welcome back! Please login to your account.
+    </p>
+
+
+    <!-- Email -->
+
+    <input
+        type="email"
+        id="email"
+        placeholder="Email"
+    >
+
+
+    <!-- Password -->
+
+    <div class="password-container">
+
+        <input
+            type="password"
+            id="password"
+            placeholder="Password"
+        >
+
+        <button
+            type="button"
+            class="eye-button"
+            id="eyeButton"
+            onclick="togglePassword()"
+        >
+            👁️
+        </button>
+
+    </div>
+
+
+    <!-- Login -->
+
+    <button
+        class="login-button"
+        onclick="login()"
+    >
+        Login
+    </button>
+
+
+    <!-- Message -->
+
+    <div
+        id="message"
+        class="message"
+    ></div>
+
+
+    <!-- Sign Up -->
+
+    <div class="links">
+
+        <p>
+
+            Don't have an account?
+
+            <a href="signup.html">
+                Sign Up
+            </a>
+
+        </p>
+
+    </div>
+
+
+    <!-- Home -->
+
+    <a
+        href="index.html"
+        class="home-button"
+    >
+        ← Back to Home
+    </a>
+
+
+</div>
+
+
+<!-- ==========================================
+     SUPABASE JAVASCRIPT LIBRARY
+========================================== -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+<script>
+
+    /* ==========================================
+       SUPABASE INFORMATION
+    ========================================== */
+
+    const SUPABASE_URL =
+        "https://tlsaazbjavqiormpuugq.supabase.co";
+
+
+    const SUPABASE_PUBLISHABLE_KEY =
+        "sb_publishable_CaT3n6PikmsVTVMaQFr8iw_fcskLkrv";
+
+
+    const supabaseClient =
+        supabase.createClient(
+            SUPABASE_URL,
+            SUPABASE_PUBLISHABLE_KEY
+        );
+
+
+    /* ==========================================
+       SHOW / HIDE PASSWORD
+    ========================================== */
+
+    function togglePassword() {
+
+        const password =
+            document.getElementById("password");
+
+        const eyeButton =
+            document.getElementById("eyeButton");
+
+
+        if (password.type === "password") {
+
+            password.type = "text";
+
+            eyeButton.textContent = "🙈";
+
+        }
+
+        else {
+
+            password.type = "password";
+
+            eyeButton.textContent = "👁️";
+
+        }
+
+    }
+
+
+    /* ==========================================
+       LOGIN
+    ========================================== */
+
+    async function login() {
+
+        const email =
+            document.getElementById("email").value.trim();
+
+        const password =
+            document.getElementById("password").value;
+
+        const message =
+            document.getElementById("message");
+
+
+        /* Check fields */
+
+        if (!email || !password) {
+
+            message.textContent =
+                "Please enter your email and password.";
+
+            return;
+        }
+
+
+        message.textContent =
+            "Logging in...";
+
+
+        /* ==========================================
+           SUPABASE LOGIN
+        ========================================== */
+
+        const { data, error } =
+            await supabaseClient.auth.signInWithPassword({
+
+                email: email,
+
+                password: password
+
+            });
+
+
+        /* Check error */
+
+        if (error) {
+
+            message.textContent =
+                error.message;
+
+            return;
+        }
+
+
+        /* Login successful */
+
+        message.textContent =
+            "Login successful!";
+
+
+        /* Go to profile */
+
+        setTimeout(function() {
+
+            window.location.href =
+                "https://xnoia-sys.github.io/xnoiav/profile.html";
+
+        }, 1000);
+
+    }
+
+</script>
+
+
+</body>
+
+</html>
